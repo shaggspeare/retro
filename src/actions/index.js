@@ -7,14 +7,13 @@ export const signIn = (user) =>({
 	user
 });
 
-
 export function logUser(user) {
 	return dispatch => {
 		return new Promise(() => {
 			setTimeout( () => {
 				dispatch(signIn(user));
-				hashHistory.push('/')
-			}, 1000);
+				hashHistory.push('/say')
+			}, 500);
 		})
 	};
 }

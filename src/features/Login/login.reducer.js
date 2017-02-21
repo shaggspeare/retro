@@ -1,10 +1,9 @@
-import { SIGN_IN  } from '../actions';
+import { SIGN_IN  } from '../../actions';
 
 const initialState = {
 	email: "John",
 	password: 'Doe',
 	isLoggedIn: false
-
 };
 
 export default function signIn(state = initialState , action) {
@@ -15,7 +14,6 @@ export default function signIn(state = initialState , action) {
 				password: action.user.password,
 				isLoggedIn: action.user.isLoggedIn
 			});
-
 		default:
 			return state
 	}

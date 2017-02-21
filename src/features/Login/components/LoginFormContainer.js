@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as SignActions from '../actions';
-import Home from '../components/Home';
+import * as SignActions from '../../../actions';
+import LoginForm from './LoginForm';
 
 const mapStateToProps = ({user}) => {
 	return {
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => ({
 	actions: bindActionCreators(SignActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

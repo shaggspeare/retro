@@ -17,8 +17,8 @@ class LoginForm extends Component {
             emailErrorText: '', passwordErrorText: '',
             formIsValid: false, submitButtonDisabled: false
         };
-        this.validateEmail = debounce(this.validateEmail, 200);
-        this.validatePassword = debounce(this.validatePassword, 200);
+        this.validateEmail = debounce(this.validateEmail, 1500);
+        this.validatePassword = debounce(this.validatePassword, 1500);
     }
    validateEmail(val) {
        if (validator.isEmail(val)) {
@@ -72,7 +72,7 @@ class LoginForm extends Component {
                 <div className="login-form">
                     <Paper zDepth={2} className="form-wrapper">
                     <form>
-                        <h2 className="form-wrapper__title">Sign In</h2>
+                        <h2 className="form-wrapper__title">Welcome</h2>
                         <TextField
                             hintText="email@example.com"
                             floatingLabelText="Your email"

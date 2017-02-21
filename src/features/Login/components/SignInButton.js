@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const SignInButton = (props) => {
+const SignInButton = ({ link, title }) => {
 	return (
-		<Link to={props.link}>
-			<RaisedButton label={props.title} primary={true} className="home__btn"/>
+		<Link to={link}>
+			<RaisedButton label={title} primary={true} className="home__btn"/>
 		</Link>
 	);
 }

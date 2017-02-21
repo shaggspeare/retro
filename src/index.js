@@ -6,9 +6,9 @@ import { Provider } from 'react-redux';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import store from './stores/index.js';
 
-import HomeContainer from './containers/HomeContainer';
-import LoginFormContainer from './containers/LoginFormContainer';
-import ForgotPassword from './components/ForgotPasswordComponent'
+import Home from './features/Home/components/Home';
+import LoginFormContainer from './features/Login/components/LoginFormContainer';
+import SayContainer from './features/Step1-Say/components/SayContainer';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // Needed for Material-UI
@@ -21,9 +21,9 @@ ReactDOM.render(
         <MuiThemeProvider>
             <Router history={hashHistory}>
                 <Route path="/">
-                    <IndexRoute component={HomeContainer} />
+                    <IndexRoute component={Home} />
                     <Route path="sign-in" component={LoginFormContainer} />
-                    <Route path="forgot-password" component={ForgotPassword} />
+                    <Route path="say" component={SayContainer} />
                 </Route>
         </Router>
         </MuiThemeProvider>
