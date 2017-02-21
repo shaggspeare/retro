@@ -8,6 +8,5 @@ const Home = () =>
             <SignInButton title={"Let's begin"} link={'/sign-in'} />
         </div>
     </div>;
-        
 
 export default Home;
