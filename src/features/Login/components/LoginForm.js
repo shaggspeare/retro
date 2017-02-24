@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 
 import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
@@ -17,15 +17,13 @@ class LoginForm extends Component {
             emailErrorText: '', passwordErrorText: '',
             formIsValid: false, submitButtonDisabled: false
         };
-        this.validateEmail = debounce(this.validateEmail, 1500);
-        this.validatePassword = debounce(this.validatePassword, 1500);
-    }
+        this.validateEmail = debounce(this.validateEmail, 500);
+        this.validatePassword = debounce(this.validatePassword, 500);
+   }
+
    validateEmail(val) {
-       if (validator.isEmail(val)) {
-           this.setState({ emailErrorText: '', formIsValid: true })
-       } else {
-           this.setState({ emailErrorText: 'Sorry, you entered invalid email' })
-       }
+       (validator.isEmail(val)) ? this.setState({ emailErrorText: '', formIsValid: true })
+                                    : this.setState({ emailErrorText: 'Sorry, you entered invalid email' })
    }
 
    validatePassword(val) {
@@ -41,6 +39,7 @@ class LoginForm extends Component {
        this.validateEmail(val);
        this.setState({email: val});
    }
+
    handlePasswordChange(event) {
        let val = event.target.value;
        this.validatePassword(val);
@@ -61,7 +60,6 @@ class LoginForm extends Component {
        this.setState({submitButtonDisabled: true});
        this.setState({email: '', password: ''});
 	   this.props.actions.logUser(user);
-
    }
 
    render() {
@@ -98,9 +96,7 @@ class LoginForm extends Component {
                             className="form-wrapper__btn"
                             onClick={(e) => this.handleSubmit(e)}
                         />
-                        <Link to={'/forgot-password'}>
-                            <span className="form-wrapper__forget-link">I forgot Password</span>
-                        </Link>
+                        <span className="form-wrapper__forget-link">I forgot Password</span>
                     </form>        
                     </Paper>
                 </div>
@@ -110,4 +106,3 @@ class LoginForm extends Component {
 }
 
 export default LoginForm;
-

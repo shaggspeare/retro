@@ -4,9 +4,11 @@ class Say extends Component {
 
     render() {
         return (
-            <div className="">
+            <div>
                 <h1 className="main-title">Say</h1>
-                <h2 className="home__user">You are authorized with following email : <strong>{this.props.userEmail}</strong></h2>
+                <h2 className="home__user">You are authorized with following email : 
+                    <strong>{this.props.userEmail}</strong>
+                </h2>
             </div>
         );
     }
