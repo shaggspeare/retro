@@ -1,5 +1,5 @@
 import React from 'react';
-import SignInButton from '../../Login/components/SignInButton';
+import SignInButton from '../../../common/components/buttons/SignInButton';
 
 const Home = () => 
     <div className="">

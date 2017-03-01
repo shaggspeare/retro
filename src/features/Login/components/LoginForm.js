@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-// import { Link } from 'react-router';
 
-import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -13,27 +11,39 @@ class LoginForm extends Component {
 
     constructor(props){
         super(props);
-        this.state = { email: '', password: '',
-            emailErrorText: '', passwordErrorText: '',
-            formIsValid: false, submitButtonDisabled: false
+        this.state = { 
+            email: '',
+            password: '',
+            emailErrorText: '',
+            passwordErrorText: '',
+            submitButtonDisabled: false
         };
+
         this.validateEmail = debounce(this.validateEmail, 500);
         this.validatePassword = debounce(this.validatePassword, 500);
+        this.isFormValid = this.isFormValid.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
    }
 
    validateEmail(val) {
-       (validator.isEmail(val)) ? this.setState({ emailErrorText: '', formIsValid: true })
-                                    : this.setState({ emailErrorText: 'Sorry, you entered invalid email' })
+       validator.isEmail(val) ? this.setState({ emailErrorText: '', emailIsValid: true })
+                              : this.setState({ emailErrorText: 'Sorry, you entered invalid email' });
+       this.isFormValid();                       
    }
 
    validatePassword(val) {
-        if (val.length > 5) {
-            this.setState({ passwordErrorText: '', formIsValid: true })
-        } else {
-            this.setState({ passwordErrorText: 'Sorry, password must be at least 6 symbols long' })
-        }
+        val.length > 5 ? this.setState({ passwordErrorText: '', passwordIsValid: true })
+                       : this.setState({ passwordErrorText: 'Sorry, password must be at least 6 symbols long' });
+        this.isFormValid();               
    }
   
+  isFormValid() {
+      this.state.emailIsValid && this.state.passwordIsValid
+        ? this.setState({submitButtonDisabled: false})
+        : this.setState({submitButtonDisabled: true})
+  }
+
    handleEmailChange(event) {
        let val = event.target.value;
        this.validateEmail(val);
@@ -50,22 +60,18 @@ class LoginForm extends Component {
        let email = this.state.email.trim();
        let password = this.state.password.trim();
 
-       let formIsValid  = this.state.formIsValid;
-
-       if (!formIsValid) {
-           return;
-       }
 	   let isLoggedIn = true;
-       let user = {email, password, isLoggedIn};
+       let user = { email, password, isLoggedIn };
+
        this.setState({submitButtonDisabled: true});
        this.setState({email: '', password: ''});
+
 	   this.props.actions.logUser(user);
    }
 
    render() {
         return (
             <div>
-                <AppBar title="JS Mentoring"/>
                 <h1 className="main-title">Retro App</h1>
                 <div className="login-form">
                     <Paper zDepth={2} className="form-wrapper">
@@ -78,7 +84,7 @@ class LoginForm extends Component {
                             value={this.state.email}
                             className="form-wrapper__input"
                             errorText={this.state.emailErrorText}
-                            onChange={this.handleEmailChange.bind(this)}
+                            onChange={this.handleEmailChange}
                         />
                         <TextField
                             hintText="Password Field (min 6 chars)"
@@ -87,7 +93,7 @@ class LoginForm extends Component {
                             value={this.state.password}
                             className="form-wrapper__input"
                             errorText={this.state.passwordErrorText}
-                            onChange={this.handlePasswordChange.bind(this)}
+                            onChange={this.handlePasswordChange}
                         />
                         <RaisedButton
                             disabled={this.state.submitButtonDisabled}
