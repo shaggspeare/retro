@@ -1,4 +1,6 @@
 import React from 'react';
+
+import '.././home.css'
 import SignInButton from '../../../common/components/buttons/SignInButton';
 
 const Home = () => 

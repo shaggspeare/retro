@@ -1,13 +1,10 @@
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 a {
   text-decoration: none;
-}
-
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px white inset;
 }
 
 body {
@@ -28,71 +25,3 @@ body {
   font-size: 2rem;
 }
 
-.home {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.home__btn {
-  margin-top: 20px;
-}
-
-.home__user {
-  margin-top: 20px;
-  color: white;
-  font-size: 1.6rem;
-  font-weight: 300;
-}
-
-.home__user strong {
-  font-weight: 500;
-  color: #00BCD4;
-}
-
-.login-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-wrapper {
-  padding: 40px 20px;
-  /*border: 2px solid #00BCD4;*/
-  width: 350px;
-  display: block;
-  margin: 50px auto; }
-
-.form-wrapper__title {
-  color: #00BCD4;
-  font-weight: 300;
-  text-align: center;
-  font-size: 2.4rem;
-}
-
-.form-wrapper__input {
-  margin: 10px auto 0 auto;
-  width: 100% !important;
-}
-
-.form-wrapper__btn {
-  margin: 20px 0;
-  width: 100%;
-}
-
-.form-wrapper__forget-link {
-  display: block;
-  color: #2F2F3C;
-  text-align: right;
-  width: 100%;
-}
-
-.forgot-pass {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}

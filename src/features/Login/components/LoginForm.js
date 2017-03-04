@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import validator from 'validator';
+import debounce from 'lodash.debounce';
 
+import '.././login.css';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import validator from 'validator';
-import debounce from 'lodash.debounce';
 
 class LoginForm extends Component {
 
@@ -45,23 +46,25 @@ class LoginForm extends Component {
   }
 
    handleEmailChange(event) {
-       let val = event.target.value;
+       const val = event.target.value;
+
        this.validateEmail(val);
        this.setState({email: val});
    }
 
    handlePasswordChange(event) {
-       let val = event.target.value;
+       const val = event.target.value;
+
        this.validatePassword(val);
        this.setState({password: val});
    }
 
    handleSubmit() {
-       let email = this.state.email.trim();
-       let password = this.state.password.trim();
+       const email = this.state.email.trim();
+       const password = this.state.password.trim();
 
-	   let isLoggedIn = true;
-       let user = { email, password, isLoggedIn };
+	   const isLoggedIn = true;
+       const user = { email, password, isLoggedIn };
 
        this.setState({submitButtonDisabled: true});
        this.setState({email: '', password: ''});
@@ -71,18 +74,17 @@ class LoginForm extends Component {
 
    render() {
         return (
-            <div>
-                <h1 className="main-title">Retro App</h1>
-                <div className="login-form">
-                    <Paper zDepth={2} className="form-wrapper">
+            <div >
+                <div className="form-wrapper">
+                    <Paper zDepth={2} className="login-form ">
                     <form>
-                        <h2 className="form-wrapper__title">Welcome</h2>
+                        <h2 className="login-form__title">Sign In</h2>
                         <TextField
                             hintText="email@example.com"
                             floatingLabelText="Your email"
                             type="email"
                             value={this.state.email}
-                            className="form-wrapper__input"
+                            className="login-form__input"
                             errorText={this.state.emailErrorText}
                             onChange={this.handleEmailChange}
                         />
@@ -91,7 +93,7 @@ class LoginForm extends Component {
                             floatingLabelText="Password"
                             type="password"
                             value={this.state.password}
-                            className="form-wrapper__input"
+                            className="login-form__input"
                             errorText={this.state.passwordErrorText}
                             onChange={this.handlePasswordChange}
                         />
@@ -99,10 +101,10 @@ class LoginForm extends Component {
                             disabled={this.state.submitButtonDisabled}
                             label="LogIn"
                             primary={true}
-                            className="form-wrapper__btn"
+                            className="login-form__btn"
                             onClick={(e) => this.handleSubmit(e)}
                         />
-                        <span className="form-wrapper__forget-link">I forgot Password</span>
+                        <span className="login-form__forget-link">I forgot Password</span>
                     </form>        
                     </Paper>
                 </div>
