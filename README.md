@@ -2,9 +2,9 @@ This project was developed to practice my skills in react in redux.
 
 Basically, it is a react-redux implementation of retrospective scrum app.
 
-`Note:` Project is not finished
+###`Note:` Project is not finished
 
-Live Demo here[https://shaggspeare.github.io/retro].
+Live Demo here: https://shaggspeare.github.io/retro.
 
 Project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
