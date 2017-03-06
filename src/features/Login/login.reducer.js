@@ -6,7 +6,7 @@ const initialState = {
 	isLoggedIn: false
 };
 
-export default function signIn(state = initialState , action) {
+export default function signIn(state = initialState, action) {
 	switch (action.type) {
 		case SIGN_IN :
 			return Object.assign({}, state, {
@@ -15,6 +15,6 @@ export default function signIn(state = initialState , action) {
 				isLoggedIn: action.user.isLoggedIn
 			});
 		default:
-			return state
+			return state;
 	}
 }
